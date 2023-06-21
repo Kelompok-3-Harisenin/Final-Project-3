@@ -12,10 +12,10 @@ app.use(cors("*"));
 app.use(morgan("tiny"));
 
 app.get("/", async(req,res) => {
-    const users = await db.User.findAll();
+    const products = await db.detailProduct.findAll();
 
     return res.status(200).json({
-        data: users,
+        data: products,
     });
 });
 // app.get("/Atest", async(req,res) => {

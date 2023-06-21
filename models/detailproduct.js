@@ -38,18 +38,24 @@ module.exports = (sequelize, DataTypes) => {
 
     },
     description: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
     review: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
     rating: {
       type: DataTypes.INTEGER
     },
-    product_quote: {
+    product_quote_S: {
       type: DataTypes.INTEGER
     },
-    initial_price: {
+    product_quote_L: {
+      type: DataTypes.INTEGER
+    },
+    product_quote_XL: {
+      type: DataTypes.INTEGER
+    },
+    initialPrice: {
       type: DataTypes.INTEGER
     },
     category: {
@@ -60,14 +66,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     createdAt: {
       allowNull: false,
+      defaultValue: 'CURRENT_TIMESTAMP',
       type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
+      defaultValue:'CURRENT_TIMESTAMP',
       type: DataTypes.DATE
     }
   }, {
     sequelize,
+    timestamps: true,
     modelName: 'detailProduct'
   });
   return detailProduct;

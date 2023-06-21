@@ -42,14 +42,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     accountType: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.STRING
     },
     createdAt: {
       allowNull: false,
+      defaultValue:'CURRENT_TIMESTAMP',
       type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
+       defaultValue:'CURRENT_TIMESTAMP',
       type: DataTypes.DATE
     }
   }, {

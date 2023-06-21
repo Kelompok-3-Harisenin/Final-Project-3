@@ -41,15 +41,18 @@ module.exports = (sequelize, DataTypes) => {
     },
     createdAt: {
       allowNull: false,
+      defaultValue:'CURRENT_TIMESTAMP',
       type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
+      defaultValue:'CURRENT_TIMESTAMP',
       type: DataTypes.DATE
     }
   }, {
     sequelize,
     modelName: 'thumbnail',
+    
   });
   return thumbnail;
 };
