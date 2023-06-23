@@ -23,37 +23,49 @@ app.get('/api/products', async (req, res) => {
     // Calculate the offset based on the page number and items per page
     const offset = (page - 1) * itemsPerPage;
     // http://localhost:3001/api/products?page=1
-    // Retrieve the desired columns for the page based on the category
 
-
-
-    // const products = await db.detailProduct.findAll({
-    //   attributes: ['detailName','category'],
-    //   where: {
-    //     category: 'T-Shirt',
-    //   },
-    //   order: [['id', 'ASC']],
-    //   offset,
-    //   limit: itemsPerPage,
-      
-    // });
-
-    const products = await sequelize.query(
-      "SELECT p.*, t.* FROM detailProducts AS p JOIN thumbnails AS t ON p.thumbnail = t.id;"
+    const [products] = await sequelize.query(
+      "SELECT DISTINCT p.*, t.thumbnailPreview, t.thumbnailUrl1, t.thumbnailUrl2, t.thumbnailUrl3 FROM detailProducts AS p JOIN thumbnails AS t ON p.thumbnail = t.id LIMIT 3;"
     );
+      return res.status(200).json({
+        data: products,
+      })
+      
+    } catch (error) {
+      console.error('Error retrieving data:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
-    return res.status(200).json({
-      data: products,
-    })
- 
-  } catch (error) {
-    console.error('Error retrieving data:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
+app.listen(3001, () => {
+  console.clear();
+  console.debug("Server running on port http://localhost:3001");
 });
 
 
 
+
+
+
+
+// SELECT detailName, category
+// FROM detailProducts
+// WHERE category = :categoryValue
+// ORDER BY id ASC
+// LIMIT :offset, :itemsPerPage; =========pakai ` ` 
+
+
+
+// const products = await db.detailProduct.findAll({
+//   attributes: ['detailName','category'],
+//   where: {
+//     category: 'T-Shirt',
+//   },
+//   order: [['id', 'ASC']],
+//   offset,
+//   limit: itemsPerPage,
+  
+// });
 // app.get("/Atest", async(req,res) => {
 //     const users = await db.User.findOne();
 
@@ -61,8 +73,3 @@ app.get('/api/products', async (req, res) => {
 //         data: users,
 //     });
 // });
-
-app.listen(3001, () => {
-    console.clear();
-    console.debug("Server running on port http://localhost:3001");
-  });
