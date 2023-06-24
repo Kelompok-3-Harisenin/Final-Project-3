@@ -16,16 +16,6 @@ module.exports = {
       discount: {
         type: Sequelize.INTEGER
       },
-      thumbnail: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'thumbnails',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-
-      },
       description: {
         type: Sequelize.TEXT
       },
@@ -53,6 +43,22 @@ module.exports = {
       link:{
         type: Sequelize.STRING
       },
+      thumbnailPreview: {
+        type: Sequelize.STRING
+      },
+      thumbnailUrl1: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      thumbnailUrl2: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      thumbnailUrl3: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      
       createdAt: {
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

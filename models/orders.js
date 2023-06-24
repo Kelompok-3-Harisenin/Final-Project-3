@@ -38,15 +38,6 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     },
-    thumbnail_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'thumbnails', 
-        key: 'id'
-      },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
-    },
     createdAt: {
       allowNull: false,
       defaultValue:'CURRENT_TIMESTAMP',
