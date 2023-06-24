@@ -17,6 +17,7 @@ const pantsController = require('./controllers/pantsController');
 const shirtController = require('./controllers/shirtController');
 const sweaterController = require('./controllers/sweaterController');
 const tshirtController = require('./controllers/t-shirtController');
+const detailProductsController = require('./controllers/detailProductsController')
 
 app.use('/products', allProductsController);
 app.use('/products', accessoriesController);
@@ -25,6 +26,7 @@ app.use('/products', shirtController);
 app.use('/products', sweaterController);
 app.use('/products', allProductsController);
 app.use('/products', tshirtController);
+app.use('/products', detailProductsController);
 
 app.listen(3001, () => {
   console.clear();
