@@ -12,8 +12,19 @@ app.use(cors("*"));
 app.use(morgan("tiny"));
 
 const allProductsController = require('./controllers/allProductsController');
+const accessoriesController = require('./controllers/accessoriesController');
+const pantsController = require('./controllers/pantsController');
+const shirtController = require('./controllers/shirtController');
+const sweaterController = require('./controllers/sweaterController');
+const tshirtController = require('./controllers/t-shirtController');
 
 app.use('/products', allProductsController);
+app.use('/products', accessoriesController);
+app.use('/products', pantsController);
+app.use('/products', shirtController);
+app.use('/products', sweaterController);
+app.use('/products', allProductsController);
+app.use('/products', tshirtController);
 
 app.listen(3001, () => {
   console.clear();

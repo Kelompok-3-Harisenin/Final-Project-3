@@ -3,7 +3,7 @@ const router = express.Router();
 const { sequelize } = require("../models");
 const itemsPerPage = 2; // Number of items (columns) to display per page
 
-router.get('/allproducts', async (req, res) => {
+router.get('/pants', async (req, res) => {
   try {
     const page = parseInt(req.query.page || 1, 10); // Get the page number from the query parameter, default to 1 if not provided
 
@@ -12,7 +12,7 @@ router.get('/allproducts', async (req, res) => {
     // http://localhost:3001/products/allproducts?page=1
 
     const [products] = await sequelize.query(
-      "SELECT * FROM detailProducts LIMIT 5;"
+        "SELECT * FROM detailProducts WHERE category='Pants' LIMIT 5;"
     );
       return res.status(200).json({
         data: products,
