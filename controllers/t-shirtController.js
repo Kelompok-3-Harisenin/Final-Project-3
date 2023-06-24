@@ -12,7 +12,7 @@ router.get('/t-shirt', async (req, res) => {
     // http://localhost:3001/products/t-shirt?page=1
 
     const [products] = await sequelize.query(
-        "SELECT * FROM detailProducts WHERE category='t-shirt' LIMIT 9;"
+        "SELECT * FROM detailProducts WHERE category='t-shirt';"
     );
       return res.status(200).json({
         data: products,
